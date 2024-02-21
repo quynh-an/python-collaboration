@@ -37,3 +37,20 @@ if completed_tasks_question.lower() == 'y':
         more_completed_tasks = input("Did you finish any other tasks? Enter any key for yes.")
         if not more_completed_tasks:
             break
+
+print(" ")
+delete_tasks = input("Would you like to delete tasks? Input 'y' for yes. Any other key is no.")
+if delete_tasks == 'y':
+    tasks_to_delete = input("Enter the task numbers you want to delete, each number separated by a space: ")
+    list_of_tasks_to_delete = list(tasks_to_delete.split())
+else:
+     print("No tasks will be deleted")
+   
+todolist_keys = list(todolist.keys())
+for key in todolist_keys:
+    if str(key) in list_of_tasks_to_delete:
+        del todolist[key]
+
+print(" ")
+print("Your new to do list is:")
+print(todolist)
