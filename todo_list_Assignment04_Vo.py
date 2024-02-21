@@ -26,3 +26,14 @@ if view_todo:
     print(todolist)
 else: 
     print("You did not request to show your list.")
+    
+completed_tasks_question = input("Did you complete any tasks? Enter 'y' for yes. All other answers are no.")
+if completed_tasks_question.lower() == 'y':
+    while True:
+        task_completed = int(input("Enter the task number of the task you have completed: "))
+        for key, value in todolist:
+            if key == task_completed:
+                todolist[task_completed] = f"{value} (complete)"
+        more_completed_tasks = input("Did you finish any other tasks? Enter any key for yes.")
+        if not more_completed_tasks:
+            break
