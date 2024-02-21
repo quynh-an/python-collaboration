@@ -19,3 +19,10 @@ while True:
             break
     break
 
+view_todo = input("Enter any key to view your to do list. No key means no list will be shown. ")
+if view_todo:
+    print("Here are all your tasks: ")
+    print(" ")
+    print(todolist)
+else: 
+    print("You did not request to show your list.")
