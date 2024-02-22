@@ -6,6 +6,20 @@ Created on Wed Feb 21 12:16:56 2024
 @author: tandyllc
 """
 
+def move_tasks(todo_dict):
+    write_file = 'todo_today.txt'
+    while True:
+        task_to_move = input("Enter a task number to move to another file. Press a character to stop. " )
+        if not task_to_move.isdigit():
+            break
+        task_to_move = int(task_to_move)
+        if task_to_move in todo_dict:
+            with open(write_file, 'a') as file:
+                file.write(f"{task_to_move}: {todo_dict[task_to_move]}\n")
+        else:
+            print("Task not found in the list.")
+    return write_file
+
 print("You are about to create a to-do list.")
 
 while True:
@@ -19,6 +33,7 @@ while True:
             break
     break
 
+print(" ")
 view_todo = input("Enter any key to view your to do list. No key means no list will be shown. ")
 if view_todo:
     print(" ")
@@ -39,7 +54,7 @@ if completed_tasks_question.lower() == 'y':
                 break
             if key == int(task_completed): 
                 todolist[key] = f"{value} (complete)"
-        more_completed_tasks = input("Did you finish any other tasks? Enter any key for yes. Only press enter to move on.")
+        more_completed_tasks = input("Did you finish any other tasks? Enter any key for yes. Press enter to move on. ")
         if not more_completed_tasks:
             print(" ")
             print("This is your list now: ")
@@ -62,3 +77,13 @@ else:
 print(" ")
 print("Your to do list is:")
 print(todolist)
+print(" ")
+
+ask_to_move_to_file = input("Do you want to move tasks to another file? Enter 'y' for yes. ")
+if ask_to_move_to_file.lower() == 'y':
+   move_tasks(todolist)
+   print("Tasks have been added to a file.")
+else:
+    print("You did not select to move tasks to another file.")
+
+
